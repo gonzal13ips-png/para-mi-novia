@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Mi Amor ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            margin-top: 100px;
+        }
+
+        h1 {
+            font-size: 3em;
+        }
+
+        p {
+            font-size: 1.5em;
+            width: 60%;
+            margin: auto;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background-color: white;
+            color: #ff4b5c;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #ff4b5c;
+            color: white;
+        }
+
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: float 4s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-800px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Para Vos ❤️</h1>
+        <p id="mensaje">
+            Sos la persona más hermosa que llegó a mi vida. Gracias por hacerme tan feliz.
+        </p>
+        <button onclick="cambiarMensaje()">Tocame ❤️</button>
+    </div>
+
+    <script>
+        const mensajes = [
+            "Sos lo mejor que me pasó 💖",
+            "Me haces muy feliz todos los días 😍",
+            "Te amo muchísimo ❤️",
+            "Quiero estar siempre con vos 💕",
+            "Sos mi lugar favorito en el mundo 🌎",
+            "Gracias por existir ✨"
+        ];
+
+        function cambiarMensaje() {
+            const mensaje = document.getElementById("mensaje");
+            const random = Math.floor(Math.random() * mensajes.length);
+            mensaje.innerText = mensajes[random];
+            crearCorazon();
+        }
+
+        function crearCorazon() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerText = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.top = "100vh";
+            heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+
+        setInterval(crearCorazon, 800);
+    </script>
+
+</body>
+</html>

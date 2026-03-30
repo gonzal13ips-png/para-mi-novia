@@ -285,6 +285,28 @@ function ganar(){
     corazonesFinal();
 }
 setInterval(contador,1000);
+function corazonesFinal(){
+    for(let i=0;i<50;i++){
+        let heart=document.createElement("div");
+        heart.innerHTML="❤️";
+        heart.style.position="fixed";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.top="100vh";
+        heart.style.fontSize=(Math.random()*30+20)+"px";
+        heart.style.animation="subir 5s linear";
+        document.body.appendChild(heart);
+
+        setTimeout(()=>heart.remove(),5000);
+    }
+}
+
+const style=document.createElement('style');
+style.innerHTML=`
+@keyframes subir{
+    from{transform:translateY(0);}
+    to{transform:translateY(-100vh);}
+}`;
+document.head.appendChild(style);
 </script>
 
 </body>

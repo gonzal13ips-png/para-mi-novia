@@ -76,10 +76,37 @@ button{
     0%{transform:translateY(0);opacity:1;}
     100%{transform:translateY(-100vh);opacity:0;}
 }
+
+/* ESTRELLAS */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: 0.2; }
+    to { opacity: 1; }
+}
 </style>
+
 </head>
 
 <body>
+
+<div class="stars" id="stars"></div>
 
 <div class="inicio" onclick="empezar()">
     <h1>❤️ Tengo algo para vos ❤️</h1>
@@ -157,6 +184,21 @@ function corazones(){
     }
 }
 
+// CREAR ESTRELLAS
+function crearEstrellas() {
+    const contenedor = document.getElementById("stars");
+
+    for (let i = 0; i < 100; i++) {
+        let star = document.createElement("div");
+        star.className = "star";
+        star.style.top = Math.random() * 100 + "%";
+        star.style.left = Math.random() * 100 + "%";
+        star.style.animationDuration = (Math.random() * 2 + 1) + "s";
+        contenedor.appendChild(star);
+    }
+}
+
+crearEstrellas();
 /* CAMBIAR FECHA */
 const inicio=new Date("2025-11-01");
 

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Mi Amor ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial;
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    color:white;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+.inicio{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:#ff4b5c;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+
+.contenido{
+    display:none;
+    padding:20px;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    background:white;
+    color:#ff4b5c;
+    font-size:16px;
+    margin:10px;
+    cursor:pointer;
+}
+
+.carta{
+    display:none;
+    background:white;
+    color:#ff4b5c;
+    padding:20px;
+    border-radius:15px;
+    width:60%;
+    margin:auto;
+}
+
+.galeria img{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:15px;
+    margin:10px;
+    transition:0.3s;
+}
+
+.galeria img:hover{
+    transform:scale(1.1);
+}
+
+.heart{
+    position:fixed;
+    color:red;
+    font-size:20px;
+    animation:flotar 5s linear infinite;
+}
+
+@keyframes flotar{
+    0%{transform:translateY(0);opacity:1;}
+    100%{transform:translateY(-100vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="inicio" onclick="empezar()">
+    <h1>❤️ Tengo algo para vos ❤️</h1>
+    <p>Tocá la pantalla</p>
+</div>
+
+<div class="contenido" id="contenido">
+
+<h1>Nuestra Historia ❤️</h1>
+
+<button onclick="mostrarCarta()">Abrir Carta 💌</button>
+
+<div class="carta" id="carta">
+<p>
+Desde que estás conmigo todo es más lindo.
+Gracias por cada momento, cada risa, cada abrazo.
+Sos la persona que más amo en este mundo.
+<br><br>
+Te amo muchísimo ❤️
+</p>
+</div>
+
+<h2>📸 Nosotros</h2>
+<div class="galeria">
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+</div>
+
+<h2>⏳ Tiempo juntos</h2>
+<p id="contador"></p>
+
+<h2>¿Me amás?</h2>
+<button onclick="si()">Sí ❤️</button>
+<button onclick="no(this)">No</button>
+
+<p id="respuesta"></p>
+
+</div>
+
+<audio id="musica" loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function empezar(){
+    document.querySelector(".inicio").style.display="none";
+    document.getElementById("contenido").style.display="block";
+    document.getElementById("musica").play();
+}
+
+function mostrarCarta(){
+    document.getElementById("carta").style.display="block";
+}
+
+function si(){
+    document.getElementById("respuesta").innerText="Yo sabía ❤️";
+    corazones();
+}
+
+function no(boton){
+    boton.style.position="absolute";
+    boton.style.top=Math.random()*80+"%";
+    boton.style.left=Math.random()*80+"%";
+}
+
+function corazones(){
+    for(let i=0;i<20;i++){
+        let heart=document.createElement("div");
+        heart.innerText="❤️";
+        heart.className="heart";
+        heart.style.left=Math.random()*100+"vw";
+        document.body.appendChild(heart);
+        setTimeout(()=>heart.remove(),5000);
+    }
+}
+
+/* CAMBIAR FECHA */
+const inicio=new Date("2025-11-01");
+
+function contador(){
+    const ahora=new Date();
+    const diff=ahora-inicio;
+    const dias=Math.floor(diff/(1000*60*60*24));
+    document.getElementById("contador").innerText=
+    dias+" días juntos ❤️";
+}
+
+setInterval(contador,1000);
+</script>
+
+</body>
+</html>
